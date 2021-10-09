@@ -1,38 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>Messagerie</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/bootstrap.min.js" ></script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<?php include "include/header.php";
+include "classes/DB.php";
+include "include/isConnected.php";
+$db = new DB();
+if (isset($_GET['supprID'])){
+    $db->deleteMessage($_GET['supprID']);
+    header("Location: messagerie.php");
+}
+$messages = $db->getAllMessage($_SESSION['login_name']);
+?>
 
-    <!-- Custom styles for this template -->
-    <link href="css/signing.css" rel="stylesheet">
-</head>
-<table class="table table-hover">
+<body>
+<div class="container mt-3">
+    <br><h2>Mes messages</h2><br>
+    <table class="table">
     <thead>
     <tr>
-        <th scope="col">Login</th>
-        <th scope="col">Date reception</th>
+        <th scope="col">Émetteur</th>
+        <th scope="col">Date réception</th>
         <th scope="col">Sujet</th>
         <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>AxelVallon</td>
-        <td>03.10.2021</td>
-        <td>Labo STI</td>
-        <td>
-            <a class="btn btn-success" href="#" role="button">Répondre</a>
-            <a class="btn btn-info" href="#" role="button">Détails</a>
-            <a class="btn btn-warning" href="#" role="button">Refuser</a>
-        </td>
-    </tr>
+    <?php foreach ($messages as $message){ ?>
+        <tr>
+            <td><?php echo $message['login_name_expediteur'] ?></td>
+            <td><?php echo $message['date_reception'] ?></td>
+            <td><?php echo $message['sujet'] ?></td>
+            <td>
+                <a class="btn btn-success" href="answerMessage.php?login=<?php echo $message['login_name_expediteur']
+                    . '&sujet=' . $message['sujet'] ?>" role="button">Répondre</a>
+                <a class="btn btn-info" href="detailsMessage.php?id=<?php echo $message['id']?>" role="button">Détails</a>
+                <a class="btn btn-warning" type="submit" href="messagerie.php?supprID=<?php echo $message['id']?>" role="button">Supprimer</a>
+            </td>
+        </tr>
+    <?php } ?>
     </tbody>
 </table>
+</div>
+</body>
     <!-- https://github.com/CapitainMorgan/ProjetBDR/blob/main/src/php/vueOffreEmploi.php -->
 <?php
 

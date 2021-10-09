@@ -12,19 +12,19 @@
     <link href="css/signing.css" rel="stylesheet">
 </head>
 <body class="text-center">
-    <form class="form-signin">
+    <form class="form-signin" action="verificationLogin.php" method="post">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Login</label>
-        <input type="text" id="inputEmail" class="form-control" placeholder="Login" required autofocus>
+        <label for="inputLogin" class="sr-only">Login</label>
+        <input name="inputLogin" type="text" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-3">
+        <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
+        <!-- <div class="checkbox mb-3">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
-        </div>
+        </div> -->
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
-</form>
+    </form>
 </body>
 </html>
