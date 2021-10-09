@@ -1,12 +1,15 @@
 <?php include "include/header.php"?>
-<?php include "include/isConnected.php"?>
+<?php include "include/isConnected.php";
+if ($_SESSION['est_admin'] != '1'){
+header("Location: messagerie.php");
+} ?>
 <body>
 <div class="container mt-3">
     <form method="post" action="createUser.php">
         <br><h2>Créer un utilisateur</h2><br>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Nom d'utilisateur</span>
-            <input type="text" class="form-control" name="login_name" aria-label="Username" required aria-describedby="basic-addon1">
+            <input type="text" class="form-control" name="login_name" aria-label="Username" placeholder="Username" required aria-describedby="basic-addon1">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Mot de passe</span>
@@ -26,7 +29,7 @@
         </div>
         <br>
         <div class="input-group mb-3">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Envoyer</button>
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Créer</button>
         </div>
     </form>
 </div>

@@ -2,6 +2,9 @@
 include "classes/DB.php";
 include "include/isConnected.php";
 $db = new DB();
+if ($_SESSION['est_admin'] != '1'){
+    header("Location: messagerie.php");
+}
 if (isset($_GET['delete_login_name'])){
     $db->deleteUser($_GET['delete_login_name']);
     header("Location: listUser.php");
@@ -11,7 +14,7 @@ $users = $db->getAllUser();
 
     <body>
     <div class="container mt-3">
-        <br><h2>Mes messages</h2><br>
+        <br><h2>Liste des utilisateurs</h2><br>
         <table class="table">
             <thead>
             <tr>

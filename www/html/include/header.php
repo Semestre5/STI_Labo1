@@ -8,6 +8,7 @@
     <script src="js/bootstrap.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Custom styles for this template -->
 </head>
 
 <header>
@@ -20,7 +21,7 @@
 
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <?php
-                    if (isset($_SESSION['est_admin'])){?>
+                    if (isset($_SESSION['est_admin']) && $_SESSION['est_admin'] == '1'){?>
                         <li>
                             <a href="./createUserForm.php" class="nav-link text-white">
                                 Créer un utilisateur
@@ -44,8 +45,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white">
-                            Mon profil
+                        <a href="myProfile.php" class="nav-link text-white">
+                             Changement de mot de passe
+                        </a>
+                    </li>
+                    <li>
+                        <a href="deconnection.php" class="nav-link text-white">
+                            Déconnexion
                         </a>
                     </li>
                 </ul>
