@@ -30,7 +30,7 @@ $users = $db->getAllUser();
                 <tr>
                     <form action="updateUser.php" method="post">
                         <input hidden name="old_login_name" value="<?php echo $user['login_name'] ?>">
-                        <td><input value="<?php echo $user['login_name'] ?>" name="login_name" required></td>
+                        <td><input value="<?php echo $user['login_name'] ?>" name="login_name" readonly></td>
                         <td><input value="<?php echo $user['mot_de_passe'] ?>" name="mot_de_passe" required></td>
                         <td>
                             <input class="form-check-input" type="checkbox" name="est_valide" id="flexCheckChecked" <?php echo $user['est_valide'] == '1' ? 'checked' : ''?>>

@@ -8,7 +8,7 @@
         <input hidden name="sujet" value="<?php echo $_GET['sujet']?>">
         <div class="input-group mb-3">
             <textarea required class="form-control" name="corps" id="exampleFormControlTextarea1" rows="5"></textarea>
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Envoyer à<br>login</button>
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Envoyer à<br><?php echo $_GET['login'] ?></php></button>
         </div>
     </form>
 </div>
