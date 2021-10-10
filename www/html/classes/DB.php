@@ -36,7 +36,7 @@ class DB {
     public function getAllMessage($login_name){
         try {
             $this->connect();
-            $query = $this->file_db->query("SELECT * FROM Message WHERE login_name_destinataire ='" . $login_name . "'");
+            $query = $this->file_db->query("SELECT * FROM Message WHERE login_name_destinataire ='" . $login_name . "' ORDER BY date_reception DESC");
             $result = $query->fetchAll();
             $this->disconnect();
             return $result;
@@ -129,6 +129,18 @@ class DB {
             $this->connect();
             $this->file_db->exec("UPDATE Compte SET login_name = '$login_name' , mot_de_passe = '$mot_de_passe' , " .
                  "est_valide = '$est_valide' , est_admin = '$est_admin' WHERE login_name =  '$old_login_name'");
+            $this->disconnect();
+        } catch(Exception $e){
+            $this->disconnect();
+            return null;
+        }
+    }
+
+    public function updatePassword($login_name, $mot_de_passe)
+    {
+        try {
+            $this->connect();
+            $this->file_db->exec("UPDATE Compte SET mot_de_passe = '$mot_de_passe' WHERE login_name =  '$login_name'");
             $this->disconnect();
         } catch(Exception $e){
             $this->disconnect();

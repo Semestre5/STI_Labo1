@@ -22,7 +22,7 @@ header("Location: messagerie.php");
             </label>
         </div>
         <div class="form-check" style="margin-top: 7px">
-            <input class="form-check-input" type="checkbox" value="est_admin" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" name="est_admin" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Compte administrateur
             </label>
